@@ -12,7 +12,6 @@ public class RoomNodeGraphSO : ScriptableObject
     private void Awake()
     {
         LoadRoomNodeDictionary();
-
     }
 
     /// <summary>
@@ -40,8 +39,6 @@ public class RoomNodeGraphSO : ScriptableObject
         }
         return null;
     }
-
-
 
     #region Editor Code
 
