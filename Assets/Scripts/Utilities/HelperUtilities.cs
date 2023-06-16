@@ -6,7 +6,7 @@ public static class HelperUtilities
 {
     /// <summary>
     /// Empty string debug check
-    /// <summary>
+    /// </summary>
     public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
     {
         if (stringToCheck == "")
@@ -18,9 +18,8 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// List empty or contains null value check - return true if there is an error
-    /// <summary>
-
+    /// list empty or contains null value check - returns true if there is an error
+    /// </summary>
     public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
     {
         bool error = false;
@@ -32,8 +31,10 @@ public static class HelperUtilities
             return true;
         }
 
+
         foreach (var item in enumerableObjectToCheck)
         {
+
             if (item == null)
             {
                 Debug.Log(fieldName + " has null values in object " + thisObject.name.ToString());
@@ -53,4 +54,5 @@ public static class HelperUtilities
 
         return error;
     }
+
 }

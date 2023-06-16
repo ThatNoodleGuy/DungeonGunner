@@ -604,29 +604,30 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     /// </summary>
     private void InstantiateRoomGameobjects()
     {
-        // Iterate through all dungeon rooms
+        // Iterate through all dungeon rooms.
         foreach (KeyValuePair<string, Room> keyvaluepair in dungeonBuilderRoomDictionary)
         {
             Room room = keyvaluepair.Value;
 
-            // Calculate room posion (remember the room instantiation position need to be adjusted by the room template lower bounds)
-            Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.y, room.lowerBounds.x - room.templateLowerBounds.y);
+            // Calculate room position (remember the room instantiatation position needs to be adjusted by the room template lower bounds)
+            Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
 
-            // Instntiate room
-            GameObject roomGameObject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
+            // Instantiate room
+            GameObject roomGameobject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
 
-            // Get instantiated room component from instantiated prefab
-            InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+            // Get instantiated room component from instantiated prefab.
+            InstantiatedRoom instantiatedRoom = roomGameobject.GetComponentInChildren<InstantiatedRoom>();
 
             instantiatedRoom.room = room;
 
-            // Initialise the instantiated room
-            instantiatedRoom.Initialise(roomGameObject);
+            // Initialise The Instantiated Room
+            instantiatedRoom.Initialise(roomGameobject);
 
-            // Save gameobject reference
+            // Save gameobject reference.
             room.instantiatedRoom = instantiatedRoom;
         }
     }
+
 
     /// <summary>
     /// Get a room template by room template ID, returns null if ID doesn't exist

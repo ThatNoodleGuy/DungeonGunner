@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,49 +5,62 @@ using UnityEngine;
 public class DungeonLevelSO : ScriptableObject
 {
     #region Header BASIC LEVEL DETAILS
+
     [Space(10)]
     [Header("BASIC LEVEL DETAILS")]
+
     #endregion Header BASIC LEVEL DETAILS
+
     #region Tooltip
+
     [Tooltip("The name for the level")]
+
     #endregion Tooltip
-    
+
     public string levelName;
 
-    #region Header ROOM TEMPLATE FOR LEVEL
+    #region Header ROOM TEMPLATES FOR LEVEL
+
     [Space(10)]
-    [Header("ROOM TEMPLATE FOR LEVEL")]
-    #endregion Header ROOM TEMPLATE FOR LEVEL
+    [Header("ROOM TEMPLATES FOR LEVEL")]
+
+    #endregion Header ROOM TEMPLATES FOR LEVEL
+
     #region Tooltip
-    [Tooltip("Populate the list with the room templates that you want to be part of the level. You need to ensure that room templates are included for all room nodes types that are specified in the Room Node Graphs for the level.")]
+
+    [Tooltip("Populate the list with the room templates that you want to be part of the level.  You need to ensure that room templates are included for all room node types that are specified in the Room Node Graphs for the level.")]
+
     #endregion Tooltip
-    
+
     public List<RoomTemplateSO> roomTemplateList;
 
     #region Header ROOM NODE GRAPHS FOR LEVEL
+
     [Space(10)]
     [Header("ROOM NODE GRAPHS FOR LEVEL")]
+
     #endregion Header ROOM NODE GRAPHS FOR LEVEL
+
     #region Tooltip
-    [Tooltip("Populate this list with the room node graphs which should be randomly selected for the level.")]
+
+    [Tooltip("Populate this list with the room node grpahs which should be randomly selected from for the level.")]
+
     #endregion Tooltip
-    
+
     public List<RoomNodeGraphSO> roomNodeGraphList;
 
     #region Validation
+
 #if UNITY_EDITOR
+
     // Validate scriptable object details enetered
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(levelName), levelName);
         if (HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomTemplateList), roomTemplateList))
-        {
             return;
-        }
         if (HelperUtilities.ValidateCheckEnumerableValues(this, nameof(roomNodeGraphList), roomNodeGraphList))
-        {
             return;
-        }
 
         // Check to make sure that room templates are specified for all the node types in the
         // specified node graphs
@@ -127,10 +138,13 @@ public class DungeonLevelSO : ScriptableObject
 
                 if (!isRoomNodeTypeFound)
                     Debug.Log("In " + this.name.ToString() + " : No room template " + roomNodeSO.roomNodeType.name.ToString() + " found for node graph " + roomNodeGraph.name.ToString());
+
+
             }
         }
     }
 
 #endif
-    #endregion
+
+    #endregion Validation
 }

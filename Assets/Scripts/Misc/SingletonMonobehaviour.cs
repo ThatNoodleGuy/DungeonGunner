@@ -20,7 +20,7 @@ public abstract class SingletonMonobehaviour<T> : MonoBehaviour where T : MonoBe
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

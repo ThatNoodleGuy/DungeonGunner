@@ -12,6 +12,7 @@ public class RoomNodeGraphSO : ScriptableObject
     private void Awake()
     {
         LoadRoomNodeDictionary();
+
     }
 
     /// <summary>
@@ -28,6 +29,7 @@ public class RoomNodeGraphSO : ScriptableObject
         }
     }
 
+
     /// <summary>
     /// Get room node by roomNodeType
     /// </summary>
@@ -42,6 +44,7 @@ public class RoomNodeGraphSO : ScriptableObject
         }
         return null;
     }
+
 
     /// <summary>
     /// Get room node by room nodeID
@@ -65,6 +68,7 @@ public class RoomNodeGraphSO : ScriptableObject
             yield return GetRoomNode(childNodeID);
         }
     }
+
 
     #region Editor Code
 
